@@ -40,15 +40,21 @@
   <h2>Survey Questions</h2>
   <hr>
   <!-- form -->
-  <form>
+  <form class = "needs-validation" novalidate>
     <div class="form-group">
       <h4>About You</h4>
       <label for="name">Name (Required)</label>
-      <input type="name" class="form-control" id="name" placeholder="Enter your name">
+      <input type="name" class="form-control" id="name" placeholder="Enter your name" required>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
     </div>
     <div class="form-group">
       <label for="photo">Link to Photo Image (Required)</label>
-      <input type="photo" class="form-control" id="photo" placeholder="Enter the link to your photo image">
+      <input type="photo" class="form-control" id="photo" placeholder="Enter the link to your photo image" required>
+      <div class="invalid-feedback">
+        Please provide your photo image. 
+      </div>
     </div>
     <hr>
     <div class="form-group">
@@ -56,24 +62,26 @@
       <label>Your mind is always buzzing with unexplored ideas and plans.
       </label>
       <select class="form-control" id="Q1" placeholder="Enter your name">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 2</h4>
       <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your imagination.
       </label>
       <select class="form-control" id="Q2">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 3</h4>
@@ -81,48 +89,52 @@
         pressure.
       </label>
       <select class="form-control" id="Q3">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 4</h4>
       <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.
       </label>
       <select class="form-control" id="Q4">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 5</h4>
       <label for="exampleFormControlSelect1">People can rarely upset you.
       </label>
       <select class="form-control" id="Q5">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 6</h4>
       <label for="exampleFormControlSelect1">It is often difficult for you to relate to other people’s feelings.
       </label>
       <select class="form-control" id="Q6">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 7</h4>
@@ -130,24 +142,26 @@
         sensitivities.
       </label>
       <select class="form-control" id="Q7">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 8</h4>
       <label for="exampleFormControlSelect1">You rarely get carried away by fantasies and ideas.
       </label>
       <select class="form-control" id="Q8">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 9</h4>
@@ -155,26 +169,28 @@
         they are supported by facts or not.
       </label>
       <select class="form-control" id="Q9">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
     <div class="form-group">
       <h4>Question 10</h4>
       <label for="exampleFormControlSelect1">You feel more energetic after spending time with a group of people.
       </label>
       <select class="form-control" id="Q10">
-        <option>1 (Strongly disagree)</option>
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>5 (Strongly agree)</option>
+        <option>5</option>
       </select>
+      <small class="form-text text-muted">1 is strongly disagree. 5 is strongly agree.</small>
     </div>
-    <button type="submit" class="btn btn-primary submit">Submit</button>
+    <button type="submit" class="btn btn-primary submit"><i class="fas fa-check-circle"></i> Submit</button>
   </form>
   <hr>
   <!-- links -->
@@ -182,6 +198,7 @@
   <a href="https://github.com/DZhangCoder/FriendFinder">Github Repo</a>
   <br>
   <br>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 
 </html>
@@ -192,9 +209,9 @@
     var newFriend = {
       name: $("#name").val().trim(),
       photo: $("#photo").val().trim(),
-      // scores: [$("#Q1").val().trim(), $("#Q2").val().trim(), $("#Q3").val().trim(), $("#Q4").val().trim(),
-      // $("#Q5").val().trim(), $("#Q6").val().trim(), $("#Q7").val().trim(), $("#Q8").val().trim(), $("#Q9").val().trim(),
-      // $("#Q10").val().trim(),]
+      scores: [$("#Q1").val(), $("#Q2").val(), $("#Q3").val(), $("#Q4").val(),
+      $("#Q5").val(), $("#Q6").val(), $("#Q7").val(), $("#Q8").val(),
+      $("#Q9").val(), $("#Q10").val()]
     }
     console.log(newFriend);
     $.post("/api/friends", newFriend,
