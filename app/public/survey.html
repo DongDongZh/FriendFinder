@@ -29,7 +29,7 @@
       /* padding: 15px;  */
     }
 
-    .survey_btn {
+    .submit {
       width: 100%;
     }
   </style>
@@ -55,7 +55,7 @@
       <h4>Question 1</h4>
       <label>Your mind is always buzzing with unexplored ideas and plans.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1" placeholder="Enter your name">
+      <select class="form-control" id="Q1" placeholder="Enter your name">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -67,7 +67,7 @@
       <h4>Question 2</h4>
       <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your imagination.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q2">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -80,7 +80,7 @@
       <label for="exampleFormControlSelect1">You find it easy to stay relaxed and focused even when there is some
         pressure.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q3">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -92,7 +92,7 @@
       <h4>Question 4</h4>
       <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q4">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -104,7 +104,7 @@
       <h4>Question 5</h4>
       <label for="exampleFormControlSelect1">People can rarely upset you.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q5">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -116,7 +116,7 @@
       <h4>Question 6</h4>
       <label for="exampleFormControlSelect1">It is often difficult for you to relate to other people’s feelings.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q6">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -129,7 +129,7 @@
       <label for="exampleFormControlSelect1">In a discussion, truth should be more important than people’s
         sensitivities.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q7">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -141,7 +141,7 @@
       <h4>Question 8</h4>
       <label for="exampleFormControlSelect1">You rarely get carried away by fantasies and ideas.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q8">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -154,7 +154,7 @@
       <label for="exampleFormControlSelect1">You think that everyone’s views should be respected regardless of whether
         they are supported by facts or not.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q9">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -166,7 +166,7 @@
       <h4>Question 10</h4>
       <label for="exampleFormControlSelect1">You feel more energetic after spending time with a group of people.
       </label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="Q10">
         <option>1 (Strongly disagree)</option>
         <option>2</option>
         <option>3</option>
@@ -174,7 +174,7 @@
         <option>5 (Strongly agree)</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary survey_btn"><i class="fas fa-check-circle"></i> Submit</button>
+    <button type="submit" class="btn btn-primary submit">Submit</button>
   </form>
   <hr>
   <!-- links -->
@@ -182,11 +182,26 @@
   <a href="https://github.com/DZhangCoder/FriendFinder">Github Repo</a>
   <br>
   <br>
-  <!-- link to all js files -->
-  <script src="../routing/apiRoutes.js"></script>
-  <script src="../routing/htmlRoutes.js"></script>
-  <script src="../data/friends.js"></script>
-  <script src="../../server.js"></script>
 </body>
 
 </html>
+
+<script type="text/javascript">
+  $(".submit").on("click", function (event) {
+    event.preventDefault();
+    var newFriend = {
+      name: $("#name").val().trim(),
+      photo: $("#photo").val().trim(),
+      // scores: [$("#Q1").val().trim(), $("#Q2").val().trim(), $("#Q3").val().trim(), $("#Q4").val().trim(),
+      // $("#Q5").val().trim(), $("#Q6").val().trim(), $("#Q7").val().trim(), $("#Q8").val().trim(), $("#Q9").val().trim(),
+      // $("#Q10").val().trim(),]
+    }
+    console.log(newFriend);
+    $.post("/api/friends", newFriend,
+      function (data) {
+        if (data) {
+          alert("Yay! You are officially added to our Friend List!");
+        }
+      })
+  });
+</script>
