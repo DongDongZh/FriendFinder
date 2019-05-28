@@ -218,6 +218,8 @@
       function (data) {
         if (data) {
           alert("Yay! You are officially added to our Friend List!");
+          console.log(data);
+          alert("Your best match is: " + data.bestMatch + "\n"+data.bestMatchPhoto); 
         }
       })
   });
