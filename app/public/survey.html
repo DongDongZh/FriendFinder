@@ -40,11 +40,12 @@
   <h2>Survey Questions</h2>
   <hr>
   <!-- form -->
-  <form class = "needs-validation" novalidate>
+  <form class="needs-validation" novalidate id="survey_form">
     <div class="form-group">
       <h4>About You</h4>
       <label for="name">Name (Required)</label>
       <input type="name" class="form-control" id="name" placeholder="Enter your name" required>
+      <!-- user validation -->
       <div class="invalid-feedback">
         Please choose a username.
       </div>
@@ -52,8 +53,9 @@
     <div class="form-group">
       <label for="photo">Link to Photo Image (Required)</label>
       <input type="photo" class="form-control" id="photo" placeholder="Enter the link to your photo image" required>
+      <!-- user validation -->
       <div class="invalid-feedback">
-        Please provide your photo image. 
+        Please provide your photo image.
       </div>
     </div>
     <hr>
@@ -62,6 +64,7 @@
       <label>Your mind is always buzzing with unexplored ideas and plans.
       </label>
       <select class="form-control" id="Q1" placeholder="Enter your name">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -75,6 +78,7 @@
       <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your imagination.
       </label>
       <select class="form-control" id="Q2">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -89,6 +93,7 @@
         pressure.
       </label>
       <select class="form-control" id="Q3">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -102,6 +107,7 @@
       <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.
       </label>
       <select class="form-control" id="Q4">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -115,6 +121,7 @@
       <label for="exampleFormControlSelect1">People can rarely upset you.
       </label>
       <select class="form-control" id="Q5">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -128,6 +135,7 @@
       <label for="exampleFormControlSelect1">It is often difficult for you to relate to other people’s feelings.
       </label>
       <select class="form-control" id="Q6">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -142,6 +150,7 @@
         sensitivities.
       </label>
       <select class="form-control" id="Q7">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -155,6 +164,7 @@
       <label for="exampleFormControlSelect1">You rarely get carried away by fantasies and ideas.
       </label>
       <select class="form-control" id="Q8">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -169,6 +179,7 @@
         they are supported by facts or not.
       </label>
       <select class="form-control" id="Q9">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -182,6 +193,7 @@
       <label for="exampleFormControlSelect1">You feel more energetic after spending time with a group of people.
       </label>
       <select class="form-control" id="Q10">
+        <option disabled selected>Select an Option</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -213,14 +225,23 @@
       $("#Q5").val(), $("#Q6").val(), $("#Q7").val(), $("#Q8").val(),
       $("#Q9").val(), $("#Q10").val()]
     }
+
     console.log(newFriend);
+    // reset function
+    function resetAll(){
+      $("input").val("");
+      $("select").val("");
+    }
+    
     $.post("/api/friends", newFriend,
       function (data) {
         if (data) {
           alert("Yay! You are officially added to our Friend List!");
           console.log(data);
-          alert("Your best match is: " + data.bestMatch + "\n"+data.bestMatchPhoto); 
+          alert("Your best match is: " + data.bestMatch + "\n" + data.bestMatchPhoto);
+          // clear the user input 
+          resetAll(); 
         }
-      })
+      });
   });
 </script>
