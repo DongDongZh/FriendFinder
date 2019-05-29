@@ -218,30 +218,53 @@
 <script type="text/javascript">
   $(".submit").on("click", function (event) {
     event.preventDefault();
-    var newFriend = {
-      name: $("#name").val().trim(),
-      photo: $("#photo").val().trim(),
-      scores: [$("#Q1").val(), $("#Q2").val(), $("#Q3").val(), $("#Q4").val(),
-      $("#Q5").val(), $("#Q6").val(), $("#Q7").val(), $("#Q8").val(),
-      $("#Q9").val(), $("#Q10").val()]
-    }
-
-    console.log(newFriend);
-    // reset function
-    function resetAll(){
-      $("input").val("");
-      $("select").val("");
-    }
-    
-    $.post("/api/friends", newFriend,
-      function (data) {
-        if (data) {
-          alert("Yay! You are officially added to our Friend List!");
-          console.log(data);
-          alert("Your best match is: " + data.bestMatch + "\n" + data.bestMatchPhoto);
-          // clear the user input 
-          resetAll(); 
+    // user validation function 
+    function userValidation() {
+      var input = $("input"),
+        select = $("select"),
+        isValid = true;
+      for (var i = 0; i < input.length; i++) {
+        if ($(input[i]).val() === "") {
+          $(input[i]).addClass("invalid");
+          isValid = false;
         }
-      });
+      };
+      for (var j = 0; j < select.length; j++) {
+        if ($(select[i]).val() === "") {
+          $(select[i]).addClass("invalid");
+          isValid = false;
+        }
+      };
+      return isValid;
+    };
+    // user validation
+    if (userValidation()) {
+      var newFriend = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+        scores: [$("#Q1").val(), $("#Q2").val(), $("#Q3").val(), $("#Q4").val(),
+        $("#Q5").val(), $("#Q6").val(), $("#Q7").val(), $("#Q8").val(),
+        $("#Q9").val(), $("#Q10").val()]
+      }
+
+      console.log(newFriend);
+      // reset function
+      function resetAll() {
+        $("input").val("");
+        $("select").val("");
+      }
+
+      $.post("/api/friends", newFriend,
+        function (data) {
+          if (data) {
+            alert("Yay! You are officially added to our Friend List!");
+            console.log(data);
+            var content = "Your best match is: " + data.bestMatch + "\n" + data.bestMatchPhoto; 
+            alert(content);
+            // clear the user input 
+            resetAll();
+          }
+        });
+    }
   });
 </script>
