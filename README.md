@@ -10,6 +10,6 @@ In the homepage, click on the button "Go to Survey", and you will be taken to th
 After you fill out all the fields, click on the submit button and the app will display the name and picture of the user with the best overall match. See the example screenshot below. 
 
 ![Image of Patrick Star]
-(./example_img.png)
+(example_img.png)
 
 At the bottom of both the homepage and the survey page, there are two links. One is the API Friends List, where you can view all the users' data in the json format. The other one is the link to my github repo. 
