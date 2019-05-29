@@ -33,23 +33,30 @@
       width: 100%;
     }
 
-    .display{
-      height: 400px; 
-      background: white; 
-      color:black; 
-      border: 1px black solid; 
-      position:absolute; 
+    #display {
+      height: 400px;
+      background: white;
+      color: black;
+      border: 1px black solid;
+      position: absolute;
       top:240%; 
       left:30%;
-      padding: 2em;  
+      padding: 2em;
       z-index: 100;
-      opacity:1; 
+      opacity: 1;
     }
 
-    .fa-times-circle{
-      float:right; 
+    .fa-times-circle {
+      float: right;
     }
 
+    .bg {
+      overflow: hidden;
+    }
+
+    .bg_normal {
+      overflow: auto;
+    }
   </style>
 </head>
 
@@ -278,17 +285,18 @@
             alert("Yay! You are officially added to our Friend List!");
             console.log(data);
             //add the pop-up window
-            const img = "<img src = "+ data.bestMatchPhoto +" width = 300 height = 300>"
-            const closeBtn = "<i class='far fa-times-circle'></i>"; 
-            var content = "Your best match is: " + data.bestMatch+closeBtn+"<br>"+img; 
+            const img = "<img src = " + data.bestMatchPhoto + " width = 300 height = 300>"
+            const closeBtn = "<i class='far fa-times-circle'></i>";
+            var content = "Your best match is: " + data.bestMatch + closeBtn + "<br>" + img;
             var display_match = $("<div>");
             display_match.append(content);
-            display_match.addClass("display"); 
-            $("body").append(display_match); 
-            $("body").addClass("bg"); 
+            display_match.attr("id", "display");
+            $("body").append(display_match);
+            $("body").addClass("bg");
             //event: if user clicks on the close icon the pop up window closes
-            $(".fa-times-circle").on("click", function(){
-              display_match.hide(); 
+            $(".fa-times-circle").on("click", function () {
+              display_match.hide();
+              $("body").addClass("bg_normal")
             })
             // clear the user input 
             resetAll();
