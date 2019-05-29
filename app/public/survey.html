@@ -32,6 +32,24 @@
     .submit {
       width: 100%;
     }
+
+    .display{
+      height: 400px; 
+      background: white; 
+      color:black; 
+      border: 1px black solid; 
+      position:absolute; 
+      top:240%; 
+      left:30%;
+      padding: 2em;  
+      z-index: 100;
+      opacity:1; 
+    }
+
+    .fa-times-circle{
+      float:right; 
+    }
+
   </style>
 </head>
 
@@ -259,8 +277,19 @@
           if (data) {
             alert("Yay! You are officially added to our Friend List!");
             console.log(data);
-            var content = "Your best match is: " + data.bestMatch + "\n" + data.bestMatchPhoto; 
-            alert(content);
+            //add the pop-up window
+            const img = "<img src = "+ data.bestMatchPhoto +" width = 300 height = 300>"
+            const closeBtn = "<i class='far fa-times-circle'></i>"; 
+            var content = "Your best match is: " + data.bestMatch+closeBtn+"<br>"+img; 
+            var display_match = $("<div>");
+            display_match.append(content);
+            display_match.addClass("display"); 
+            $("body").append(display_match); 
+            $("body").addClass("bg"); 
+            //event: if user clicks on the close icon the pop up window closes
+            $(".fa-times-circle").on("click", function(){
+              display_match.hide(); 
+            })
             // clear the user input 
             resetAll();
           }
